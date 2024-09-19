@@ -14,38 +14,43 @@ int main()
 	while (1)
 	{
 		int menu = start();
-		if (menu == 1) {
+		switch (menu)
+		{
+		case 1:
 			receiving(totalCount);
-		}
-		else if (menu == 2) {
-			sale(totalCount, saleCount);
-		}
-		else if (menu == 3) {
-			countSituation(totalCount, saleCount);
-		}
-		else if (menu == 4) {
 			break;
-		}
-		else {
-			printf("잘못된 입력입니다.\n");
+		case 2:
+			sale(totalCount, saleCount);
+			break;
+		case 3:
+			countSituation(totalCount, saleCount);
+			break;
+		case 4:
+			printf("프로그램을 종료합니다.\n");
+			return 0;
+		default:
+			printf("잘못된 입력입니다. 다시 선택하세요.\n");
+			break;
 		}
 	}
 }
 
 int start() {
+	int menu;
+
 	printf("[쇼핑몰 관리 프로그램]\n");
 	printf("원하는 메뉴를 선택하세요. (1. 입고, 2. 판매, 3. 상품현황, 4. 종료)\n");
-	
-	int menu;
 	scanf("%d", &menu);
 	    
 	return menu;
 }
 void receiving(int* totalCount)
 {
-	printf("\n입고수량 입력: 전체 상품 입고수량 입력 1, 개별 상품 입력 2를 선택\n");
 	int menu;
+
+	printf("\n입고수량 입력: 전체 상품 입고수량 입력 1, 개별 상품 입력 2를 선택\n");
 	scanf("%d", &menu);
+
 	if (menu == 1)
 	{
 		for (int i = 0; i < SIZE; i++)
@@ -68,15 +73,15 @@ void receiving(int* totalCount)
 			printf("Error: 잘못된 선택입니다.\n");
 		}
 	}
-	else printf("Error!!");
+	else printf("Error: 잘못된 선택입니다.\n");
 
 	printf("\n");
 }
 
 void sale(int* totalCount, int* saleCount) {
-	printf("\n판매수량 입력: 전체 상품 판매수량 입력1, 개별 상품 입력 2를 선택\n");
-
 	int menu;
+
+	printf("\n판매수량 입력: 전체 상품 판매수량 입력1, 개별 상품 입력 2를 선택\n");
 	scanf("%d", &menu);
 
 	if (menu == 1) {
